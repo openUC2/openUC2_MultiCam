@@ -2,7 +2,8 @@
 
 This repository shows a minimal **Python + OpenCV** example that grabs still frames from up to eight USB webcams on Linux.  Cameras are opened in pairs (to stay within the USB bus bandwidth limit), a frame is displayed in a 2 × 3 grid, and the handles are released before the next pair is opened.
 
----
+
+![](./IMAGES/SETUP.jpeg)
 
 ## Requirements
 
@@ -26,13 +27,7 @@ mamba activate webcam
 ## Quick start
 
 ```bash
-python capture_pairs.py        # grabs /dev/video1 … /dev/video8
-```
-
-If you only have three cameras:
-
-```bash
-python capture_pairs.py --first 2 --last 4
+python getimage15_success.py        # grabs /dev/video1 … /dev/video8
 ```
 
 All open‐error messages ("cam X: open failed", "read failed") are printed to STDOUT.
@@ -80,9 +75,9 @@ Most UVC cameras can encode Motion‑JPEG in hardware.  The bulk data crossing t
 
 ---
 
-## Script overview (`capture_pairs.py`)
+## Script overview (`getimage15_success.py`)
 
-* `cam_ids = range(1, 9)` – list of device numbers.
+* `cam_ids = (2,4,6,8,10,12)` – list of device numbers (**IMPORTANT** This may be different on your system - here it was multiple of two for some reason, 0 was inbuilt webcam)
 * Loop in steps of 2: open two cameras → grab one frame each → display in grid → release both.
 * GUI built with **Matplotlib** (`plt.subplots(2, 3)`).
 * Uses **np.zeros** placeholders for empty slots if you have < 6 cameras.

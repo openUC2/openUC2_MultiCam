@@ -28,6 +28,6 @@ jobs:
       - name: Commit and push changes
         run: |
           cd ../gh-pages
-          git add docs/01_General/01_ModuleDeveloperKit/v4
+          git add docs/10_Misc/01_MultiarrayMicroscope
           git commit -m "Deploy MDK on release" || echo "No changes to commit"
           git push
